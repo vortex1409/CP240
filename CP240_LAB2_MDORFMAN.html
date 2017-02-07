@@ -1,1 +1,83 @@
-
+<html>
+	<head>
+		<title>C240 - Lab 2 - Michael Dorfman - 1/24/2017</title>
+	</head>
+	<body>
+		<script>
+		
+			// Part A
+			// Sequence of numbers starting at 3 and not exceeding 400
+			// which will increment by a factor of 2
+			function PartA()
+			{
+				document.write("<hr><h1.PART A</h1><br />");
+				var i = 3;
+				
+				// First Loop (While)
+				while(i < 400)
+				{
+					document.write(i + "<br />")
+					i = i * 2;
+				}
+				
+				document.write("<br />")
+				
+				// Second Loop (For)
+				for (i = 3; i < 400; i = i * 2)
+				{
+					document.write(i + "<br />");
+				}
+				document.write("<hr>")
+			}
+			
+			
+			// Part A
+			// Loop from 5 to 50 by 5’s
+			function Racer()
+			{
+				document.write("<hr><h1>PART B</h1><br />");
+				var i;
+				
+				// Table Render
+				document.write("<table border='1'><tr><th>Bib Number</th><th>Racer Name</th></tr>");
+				
+				// For Loop
+				// Start 5, increment by 5 until greater than or equal to 50
+				for(i = 5; i <= 50; i = i + 5)
+				{
+					// Prompts user for entry
+					var person = prompt(i + " -  Add Name: ");
+					
+					if(person == "999")
+					{
+						// Breaks loop if entry is equal to 999
+						break;
+					}
+					else if(person != "")
+					{
+						// Renders Table Row and Data with User Entry
+						document.write("<tr>");
+						document.write("<td>" + i + "</td>");
+						document.write("<td>" + person + "</td>");
+						document.write("</tr>");
+					}
+					else
+					{	
+						// If entry is blank continue loop (skip)
+						continue;
+					}
+				}
+				// End of Table
+				document.write("</table>");
+			}
+		</script>
+		<h1>CP240 - Lab 2 - Michael Dorfman</h1>
+		<h3>01/24/2017 - 10:40 AM</h3>
+		<hr>
+		
+		<!-- Buttons for calling JS Functions -->
+		<button onclick="PartA()">Run Part A</button>
+		<br /><br />
+		<button onclick="Racer()">Run Part B</button>
+	</body>
+</html>
