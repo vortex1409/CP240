@@ -1,0 +1,51 @@
+<!--
+	Class: CP240
+	Date: 1/17/2017
+	Project: Lab #1
+	Name: Michael Dorfman
+-->
+<html>
+	<head>
+		<title>CP240 - Lab 1</title>
+	</head>
+	<body>
+		<script>
+		
+			// Variable Declaration
+			var name = "HAL";
+			var age = 2001;
+			var salary = 63570;
+			var nameComment = "is a great name";
+			
+			// Constant Declaration
+			const bonus = 3200;
+			
+			//Document Write Demonstration
+			document.write("Greetings " + name + "<br />");
+			document.write('You cannot "use" this <br />');
+			document.write(name + " " + nameComment + "<br />");
+			
+			// Salary If Statements
+			if(salary >= 150000)
+			{
+				document.write("must be nice");
+			}
+			else if(salary >= 100000 && salary <= 149999)
+			{
+				document.write("you're doing well");
+			}
+			else if(salary >= 50000 && salary < 100000)
+			{
+				document.write("you are getting by");
+			}
+			else if(salary < 50000)
+			{
+				document.write("watch what you spend");
+			}
+			else
+			{
+				document.write("Invalid Entity in salary variable");
+			}
+		</script>
+	</body>
+</html>
