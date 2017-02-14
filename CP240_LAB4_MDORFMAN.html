@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<title>CP240 - LAB 4</title>
+		
+		<!--
+			Class: CP240
+			Assignment: LAB 4
+			Date: 02/07/2017
+			Description: Javascript Source Files & Functions
+			Name: Michael Dorfman
+		-->
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		<!-- Lab Source File -->
+		<script src="jssource.js"></script>
+		
+		<!-- Lab Head Part -->
+		<script>
+			var target = init(75);
+			var guess;
+		</script>
+		
+	</head>
+	<body>
+		<!--
+			RunLab Function
+			- Runs the Initial Prompt
+			- Loop Checks Numeric Range
+			- If number is out of range re-prompt
+			- else send number/vchar to testAnswer function
+		-->
+		<script>
+			function RunLab()
+			{
+				guess = prompt("Enter number between 0 & 75");
+				if(guess > 75 || guess < 0)
+				{
+					do
+					{
+						guess = parseInt(prompt("Number Out of Range Enter Again a number between 0 & 75"));
+					}while(guess > 75)
+				}
+				else
+				{
+					testAnswer(target, guess);
+				}
+			}
+		</script>
+		
+		<h1>LAB 4 - Michael Dorfman</h1>
+		<p id="canvas"></p>
+		<button class="btn btn-default" onclick="RunLab()">Run Lab</button>
+	</body>
+</html>
+
+<!-------- INCLUDE IN NEW FILE CALLED jssource.js --------------->
+<script>
+// Initialize Function
+// - Generates random number based on
+// 	 given max value and assigned lowest value
+function init(maxval)
+{
+	var returnval = Math.floor((Math.random() * maxval) + 0);
+	return returnval;
+}
+
+// Once RunLab() has been executes testAnswer is called where
+// where the submitted vchar is thrown through several if..else statements
+// that determin the output if the number is correct, high or low or invalid.
+// An exit statement is also included
+function testAnswer(target, guess)
+{	
+	if(target > guess)
+	{
+		document.getElementById("canvas").innerHTML = "Entered Number was too small.<br />Your Guess is: " + guess;
+		return false;
+	}
+	else if(target < guess)
+	{
+		document.getElementById("canvas").innerHTML = "Entered Number was too big.<br />Your Guess is: " + guess;
+		return false;
+	}
+	else if(target == guess)
+	{
+		document.getElementById("canvas").innerHTML = "Entered Number was correct.<br />Your Guess is: " + guess;
+		return true;
+	}
+	else if(guess == "exit")
+	{
+		document.getElementById("canvas").innerHTML = "Application Exited Successfully";
+		return false;
+	}
+	else
+	{
+		document.getElementById("canvas").innerHTML = "Your Number is Out of Range or Invalid";
+		return false;
+	}
+}
+</script>
