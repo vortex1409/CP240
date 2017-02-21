@@ -1,1 +1,88 @@
+<html>
+	<head>
+		<title>Michael Dorfman - CP240 - 02/14/2017</title>
+		
+		<!--
+			Class: CP240
+			Assignment: LAB 5
+			Date: 02/14/2017
+			Description: Arrays
+			Name: Michael Dorfman
+		-->
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		<!-- Lab Source File -->
+		<script src="week6lab.js"></script>
+		
+		<!-- Lab Head Part -->
+		<script>
+			var myArray = new Array(10);
+		</script>
+		
+	</head>
+	<body>		
+		<h2>LAB 5 - Michael Dorfman</h2>
+		<hr>
+		<div style="float:left; width:30%;padding-left:16px;">
+			<h3>Question 1</h3>
+			<button class="btn btn-default" onclick="fillArray(myArray);clearBox();printArray(myArray);">Fill & Print Array</button>
+			<h3>Question 2<h3>
+			<button class="btn btn-default" onclick="modifyArray(myArray);clearBox();printArray(myArray);">Modify & Print Existing Array</button>
+			<h3>Misc</h3>
+			<button class="btn btn-default" onclick="clearBox();">Clear Canvas</button>
+		</div>
+		<div style="float:left; width:50%;">
+			<h3>Canvas</h3>
+			<p id="canvas"></p>
+		</div>
+	</body>
+</html>
+
+<script>
+  // MICHAEL Dorfman
+// LAB 5
+// CP240
+// 02/14/2017
+
+// Fill Array For Question 1
+function fillArray(input)
+{
+	for (i=0; i < input.length; i++) 
+	{
+		input[i] = Math.pow((i + 3), 2);
+	}
+}
+
+// Modify Array For Question 2
+function modifyArray(input)
+{
+	input.splice(0, 0, "Michael Dorfman");
+	input.splice(9, 0, "CP240");
+	input.splice(4, 0, "cat", "dog", "orange");
+	input.splice(7, 2, "");
+}
+
+// Print Array for Both Questions
+function printArray(input)
+{
+	for (var i = 0; i < input.length; i++)
+	{
+		//document.write("Array position " + i + " holds value " + input[i] + "<br />");
+		document.getElementById("canvas").innerHTML += "Array position " + i + " holds value " + input[i] + "<br />";
+	}
+}
+
+// Clears Canvas Box
+function clearBox(elementID)
+{
+    document.getElementById("canvas").innerHTML = "";
+}
+    </script>
