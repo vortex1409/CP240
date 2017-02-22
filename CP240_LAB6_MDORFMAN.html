@@ -1,0 +1,182 @@
+<html>
+	<head>
+		<title>Michael Dorfman - CP240 - 02/21/2017</title>
+		
+		<!--
+			Class: CP240
+			Assignment: LAB 6
+			Date: 02/14/2017
+			Description: Sorting & Timers
+			Name: Michael Dorfman
+		-->
+		
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		
+		<!-- Lab Source File -->
+		<script src="week7lab.js"></script>
+		
+		<!-- Lab Head Part -->
+		<script>
+		
+			// Random Variable
+			var cvar = 10;
+			
+			// Declaring New Array
+			var myArray = new Array(cvar);
+			
+			// Populates Array with Random Values
+			for (i=0; i < myArray.length; i++) 
+			{
+				myArray[i] = Math.floor((Math.random() * 50) + 0);
+			}
+			
+			// Declaring New Array
+			// newArray is populated by return values of cloned Array
+			var newArray = clone(myArray);
+			
+			// Declaring New Array
+			var largeArray = new Array(1000);
+			
+			// Populating New Array
+			for (i=0; i < largeArray.length; i++) 
+			{
+				largeArray[i] = Math.floor((Math.random() * 5000) + 0);
+			}
+			
+			// Another Random Variable
+			var xvar = Math.floor((Math.random() * 5000) + 0);
+			
+		</script>
+		
+	</head>
+	<body>		
+		<h2>LAB 6 - Michael Dorfman</h2>
+		<hr>
+		<div style="float:left; width:30%;padding-left:16px;">
+			<h3>Controls</h3><hr>
+			<button class="btn btn-default" onclick="clearBox(canvas);printArray(myArray);">Print Array (Uncloned)</button><br /><br />
+			<button class="btn btn-default" onclick="clearBox(canvas);printArray(newArray);">Print Cloned Array</button><br /><br />
+			<button class="btn btn-default" onclick="clearBox(canvas);timeBubbleSort();printArray(myArray);">Sort Array (Bubble Sort)</button><br /><br />
+			<button class="btn btn-default" onclick="clearBox(canvas);timeDotSort();printArray(newArray);">Sort Array (Dot Sort)</button><br /><br />
+			<button class="btn btn-default" onclick="clearBox(canvas);printArray(largeArray);">Print Large Array</button><br /><br />
+			<button class="btn btn-default" onclick="clearBox(canvas);seqSearch(largeArray, xvar);">Search Large Array for XVAR</button><br /><br />
+			<button class="btn btn-default" onclick="clearBox();">Clear Canvas</button>
+		</div>
+		<div style="float:left; width:25%;">
+			<h3>Canvas</h3><hr>
+			<p id="canvas"></p>
+		</div>
+		<div style="float:left; width:25%;">
+			<h3>Timer Canvas</h3><hr>
+			<p id="tcanvas"></p>
+		</div>
+	</body>
+</html>
+
+<!-- SEPERATE FILE -->
+
+<script>
+// MICHAEL Dorfman
+// LAB 6
+// CP240
+// 02/21/2017
+
+// BubbleSort Function
+function bubbleSort(arr) 
+{
+	// Swap Variable
+    var swapped;
+	
+		// Do Loop
+		// Compares each entry and sets a boolean value
+        do 
+		{
+            swapped = false;
+            for (var i = 0; i < arr.length - 1; i++)
+			{
+                if (arr[i] > arr[i + 1]) {
+                    var temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+                    swapped = true;
+                }
+            }
+        } while (swapped);
+}
+
+// Clones an Array
+function clone (arrayIn)
+{
+	var newArray = new Array(arrayIn.length);
+	for (i = 0 ; i < arrayIn.length; i ++)
+	{
+		newArray[i] = arrayIn[i];
+	}
+	return newArray;
+}
+
+function vSort(v1,v2)
+{
+	return v1 - v2;
+}
+
+// Function to Time the Execution of the BubbleSort Function
+function timeBubbleSort()
+{
+	clearBox(canvas);
+	var t0 = performance.now();
+	bubbleSort(myArray);
+	var t1 = performance.now();
+	document.getElementById("tcanvas").innerHTML = "Bubble sort took " + (t1 - t0) + " milliseconds.";
+}
+
+// Function to Time the Execution of the DotSort Function
+function timeDotSort()
+{
+	clearBox(canvas);
+	var t0 = performance.now();
+	newArray.sort(function(a, b){return a-b});
+	var t1 = performance.now();
+	document.getElementById("tcanvas").innerHTML = "dot Sort took " + (t1 - t0) + " milliseconds.";
+}
+
+// Searches the Array for a value provided
+// If not -1 show position
+// If -1 show value not found
+function seqSearch(inArray, val)
+{
+	var checkvar = inArray.indexOf(val, 0);
+	if(checkvar != -1)
+	{
+		document.getElementById("canvas").innerHTML = "Value found in position: " + checkvar;
+	}
+	else
+	{
+		document.getElementById("canvas").innerHTML = "Value " + val + " Not Found";
+	}
+}
+
+// Prints the Array
+function printArray(input)
+{
+	for (var i = 0; i < input.length; i++)
+	{
+		//document.write("Array position " + i + " holds value " + input[i] + "<br />");
+		document.getElementById("canvas").innerHTML += "Array position " + i + " holds value " + input[i] + "<br />";
+	}
+}
+
+// Clears Canvas Box
+function clearBox(elementID)
+{
+    document.getElementById("canvas").innerHTML = "";
+	document.getElementById("tcanvas").innerHTML = "";
+}
+</script>
