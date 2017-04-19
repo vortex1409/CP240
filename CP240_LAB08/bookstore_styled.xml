@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/css" href="simplebook.css" ?>
+<bookstore>
+	<storeName>Dusty Quill</storeName>
+	<address>123 Fantasy Lane</address>
+	<collection>
+		<book>
+			<author>Clifford Stoll</author>
+			<title>The Cuckoo's Egg</title>
+			<pageCount>326</pageCount>
+			<publishDate>1989</publishDate>
+			<cost>14.43</cost>
+		</book>
+
+		<book>
+			<author>Brian Greene</author>
+			<title>The Elegant Universe </title>
+			<pageCount>464</pageCount>
+			<publishDate>1999</publishDate>
+			<cost>15.43</cost>
+		</book>
+
+		<book>
+			<author>Christopher Mcdougall</author>
+			<title>Born to Run </title>
+			<pageCount>304</pageCount>
+			<publishDate>2009</publishDate>
+			<cost>14.41</cost>
+		</book>
+
+	</collection>
+</bookstore>
