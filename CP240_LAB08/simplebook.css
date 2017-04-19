@@ -1,0 +1,24 @@
+title
+{
+	font-weight: bold;
+}
+
+author
+{
+	font-weight: italic;
+}
+
+cost
+{
+	color: green;
+}
+
+storeName
+{
+	font-size: 24pt;
+}
+
+address
+{
+	text-decoration: underline;
+}
